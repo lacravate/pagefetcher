@@ -9,4 +9,5 @@ h1 PageFetcher
       li
         = link_to image_tag(page.cover.source), page_path(page) if page.cover.present?
         = link_to page.name, page_path(page)
-        / = link_to t('.link_to_page'), page.link
+        span |
+        = link_to t('.link_to_page'), page.link

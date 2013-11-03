@@ -1,7 +1,7 @@
 en:
   pages:
     new:
-      external_id: 'Facebook page name or id'
+      external_id: 'Page name or id'
       link_to_page: 'Jump to the Facebook page'
     show:
       home: 'Back to home page'

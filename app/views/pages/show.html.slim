@@ -3,8 +3,9 @@ h1 PageFetcher
 p
   = link_to t('.home'), root_url
 
+h2
+  = @page.name
 = image_tag(@page.cover.source) if @page.cover.present?
-= @page.name
 
 h2 Feeds
 

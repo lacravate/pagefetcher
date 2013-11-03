@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+
+.pages img {
+  width: 100px;
+}
+
+.pages ul {
+  list-style-type: none;
+}
+
+.pages a {
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h1 {
+  padding-left: 450px;
+  padding-bottom: 30px;
+}
