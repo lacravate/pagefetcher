@@ -1,0 +1,21 @@
+h1 PageFetcher
+
+p
+  = link_to t('.home'), root_url
+
+= image_tag(@page.cover.source) if @page.cover.present?
+= @page.name
+
+h2 Feeds
+
+.feeds
+  ul
+    - @feeds.each do |feed|
+      li
+        p
+          = t('.from')
+          = feed['from']['name']
+        p
+          = feed['message']
+        p
+          = image_tag feed['picture']
