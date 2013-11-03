@@ -1,0 +1,8 @@
+fr:
+  pages:
+    new:
+      external_id: 'identifiant ou noom de page Facebook'
+      link_to_page: 'Sauter sur la page Facebook'
+    show:
+      home: "Retour à la page d'accueil"
+      from: De
