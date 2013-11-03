@@ -59,6 +59,9 @@ describe Page do
 
       it "can assign and persist a page and its depenedant objects in one go" do
         Page.count.should == 1
+        Page.first.location.should be_present
+        Page.first.cover.should be_present
+        Page.first.categories.all? { |c| c.is_a? Category }.should be_true
       end
     end
 
