@@ -12,6 +12,9 @@ in a certain given lapse of time.
 Database is SQLite3. So if you have the libs on your machine, the app' shoudld
 be self-sufficient.
 
+Ah, right, and if you intend to use the automatic token fetching feature,
+you have to tell FB of your application and the callback url for OAUTH.
+
 ## Installation
 
 Ruby 2 is required.
