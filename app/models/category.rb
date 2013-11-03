@@ -1,6 +1,8 @@
 # model of the category as found in the extensive page description data set
 class Category < ActiveRecord::Base
 
+  extend SortOutParams
+
   # relations
   has_and_belongs_to_many :pages
 
@@ -14,11 +16,12 @@ class Category < ActiveRecord::Base
   # mass assignment is handy
   attr_accessible *MANAGED_ATTRIBUTES.map(&:to_sym)
 
-  # sort out parameter, rationalize a bit, and go
-  def self.create_with_raw_data(data)
-    if data.is_a? Hash
-      data['external_id'] = data.delete 'id'
-      create data.slice(*MANAGED_ATTRIBUTES)
+  private
+
+  # teeny tiny modification on data before shooting
+  def self.chipchip(data)
+    data.tap do |d|
+      d['external_id'] = d.delete 'id'
     end
   end
 

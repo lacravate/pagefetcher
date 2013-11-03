@@ -1,6 +1,8 @@
 # model of the cover as found in the extensive page description data set
 class Cover < ActiveRecord::Base
 
+  extend SortOutParams
+
   # fields validations
   validates_presence_of :external_id
   validates_presence_of :source
@@ -11,11 +13,12 @@ class Cover < ActiveRecord::Base
   # mass assignment
   attr_accessible *MANAGED_ATTRIBUTES.map(&:to_sym)
 
-  # sort out parameter, rationalize a bit, and go
-  def self.create_with_raw_data(data)
-    if data.is_a? Hash
-      data['external_id'] = data.delete 'cover_id'
-      create data.slice(*MANAGED_ATTRIBUTES)
+  private
+
+  # teeny tiny modification on data before shooting
+  def self.chipchip(data)
+    data.tap do |d|
+      d['external_id'] = d.delete 'cover_id'
     end
   end
 
