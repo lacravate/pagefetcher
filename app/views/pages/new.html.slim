@@ -1,7 +1,7 @@
 h1 PageFetcher
 
-= simple_form_for(Page.new, :html => {:class => 'form-horizontal' }) do |form|
-  = form.input :external_id, :label => t('.external_id')
+= simple_form_for(Page.new, html: { class: 'form-horizontal' }) do |form|
+  = form.input :external_id, label: t('.external_id'), as: 'status'
 
 .pages
   ul

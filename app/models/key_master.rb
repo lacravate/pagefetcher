@@ -19,13 +19,18 @@ class KeyMaster
     end
   end
 
+  # look for FB pages with name or id
+  def get_page(id)
+    in_the_safe do
+      graph.get_object id
+    end
+  end
+
   # this method makes the Key Master a deputy controller
   # but why not
-  # fetch the data and if it went well, persist it right away
+  # fetches the data and if it went well, persists it right away
   def to_page(id)
-    in_the_safe do
-      Page.create_with_raw_data graph.get_object(id)
-    end
+    Page.create_with_raw_data get_page(id)
   end
 
   # feeds from a page

@@ -1,4 +1,6 @@
 fr:
+  exists: La page existe
+  exists_not: La page n'existe pas
   pages:
     new:
       external_id: 'identifiant ou nom'

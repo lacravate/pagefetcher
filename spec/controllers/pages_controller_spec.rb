@@ -39,6 +39,30 @@ describe PagesController do
 
   end
 
+  describe "lookup" do
+    context "page exists" do
+      before {
+        get 'lookup', name: 'tigerlilyapps', format: 'json'
+      }
+
+      it "should get a page and have a success status" do
+        JSON.parse(response.body)['name'].should == 'Tigerlily'
+        response.status.should == 200
+      end
+    end
+
+    context "page exists" do
+      before {
+        get 'lookup', name: '', format: 'json'
+      }
+
+      it "should get a page and have a success status" do
+        JSON.parse(response.body)['name'].should be_nil
+        response.status.should == 404
+      end
+    end
+  end
+
   describe "create" do
     before {
       subject.instance_variable_set "@key_master", master
@@ -115,6 +139,30 @@ describe PagesController do
       it "persists a page" do
         Page.count.should == 1
         Page.first.name.should == 'Tigerlily'
+        response.should be_redirect
+      end
+    end
+  end
+
+  describe "show" do
+    context "page is known" do
+      before {
+        KeyMaster.new.to_page 'tigerlilyapps'
+
+        get 'show', id: 1
+      }
+
+      it "should give a show" do
+        response.should render_template(:show)
+      end
+    end
+
+    context "page is unknown" do
+      before {
+        get 'show', id: 1
+      }
+
+      it "should give a show" do
         response.should be_redirect
       end
     end

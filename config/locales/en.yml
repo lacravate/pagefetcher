@@ -1,4 +1,6 @@
 en:
+  exists: Page exists
+  exists_not: Page does not exist
   pages:
     new:
       external_id: 'Page name or id'
